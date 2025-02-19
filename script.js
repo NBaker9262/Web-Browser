@@ -4,8 +4,8 @@ const SEARCH_ENGINE_ID = "440a21345affa4c4f"; // Replace with your Custom Search
 function searchGoogle() {
     const query = document.getElementById("searchInput").value;
     if (!query) return;
-    
-    const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${SEARCH_ENGINE_ID}`;
+
+    const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${API_KEY}&cx=${SEARCH_ENGINE_ID}&searchType=image`;
 
     fetch(url)
         .then(response => response.json())
@@ -29,10 +29,15 @@ function displayResults(results) {
         resultItem.classList.add("result");
 
         resultItem.innerHTML = `
-            <a href="${result.link}" target="_blank">${result.title}</a>
+            <img src="${result.image.thumbnailLink}" alt="Thumbnail">
+            <a href="#" onclick="loadPage('${result.link}'); return false;">${result.title}</a>
             <p>${result.snippet}</p>
         `;
 
         resultsDiv.appendChild(resultItem);
     });
+}
+
+function loadPage(url) {
+    document.getElementById("preview").src = url;
 }
