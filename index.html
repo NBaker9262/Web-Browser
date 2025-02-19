@@ -9,10 +9,10 @@
 <body>
     <div class="browser">
         <div class="toolbar">
-            <input type="text" id="urlInput" placeholder="Enter URL..." value="https://www.google.com">
-            <button onclick="loadPage()">Go</button>
+            <input type="text" id="searchInput" placeholder="Search Google...">
+            <button onclick="searchGoogle()">Search</button>
         </div>
-        <iframe id="browserFrame" src="https://www.google.com"></iframe>
+        <div id="results"></div>
     </div>
     <script src="script.js"></script>
 </body>
